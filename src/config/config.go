@@ -8,10 +8,8 @@ import (
 	"gopkg.in/go-playground/validator.v9"
 )
 
-var validate *validator.Validate
-
 func validateData(data interface{}) error {
-	validate = validator.New()
+	validate := validator.New()
 	return validate.Struct(data)
 }
 
@@ -26,7 +24,7 @@ func ReadConfig(configPath string) (model.Configs, error) {
 		return model.Configs{}, errorConvertJSONToStruct
 	}
 	errorValidateData := validateData(configs)
-	if errorConvertJSONToStruct != nil {
+	if errorValidateData != nil {
 		return model.Configs{}, errorValidateData
 	}
 	return configs, nil
