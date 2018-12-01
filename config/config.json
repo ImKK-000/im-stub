@@ -5,6 +5,7 @@
     "routes": [
         {
             "path": "/api/hi",
+            "method": "GET",
             "request": "say",
             "response": "say hello"
         }
