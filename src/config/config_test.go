@@ -23,6 +23,14 @@ func Test_ReadConfig_Should_Be_Configs_Without_Error(t *testing.T) {
 		Host:      "127.0.0.1",
 		Port:      9999,
 		EnableLog: false,
+		RouteList: []model.ConfigRoute{
+			{
+				Path:     "/api/hi",
+				Method:   "GET",
+				Request:  "say",
+				Response: "say hello",
+			},
+		},
 	}
 
 	actualConfigs, actualError := ReadConfig("../../config/config.json")
